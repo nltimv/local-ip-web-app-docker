@@ -16,9 +16,10 @@ spec:
       - name: ip-webapp 
         image: registry.gitlab.com/nltimv/notifierapp-repo/testservice:#{Build.BuildId}#
         ports: 
-        - containerPort: 80 
---- 
-# https://kubernetes.io/docs/concepts/services-networking/service/#defining-a-service  
+        - containerPort: 80
+      imagePullSecrets:
+      - name: gitlab-creds #https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+---  
 kind: Service 
 apiVersion: v1 
 metadata: 
